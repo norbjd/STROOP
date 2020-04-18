@@ -16,7 +16,7 @@ namespace STROOP.Utilities
     {
         public static void FormatSubtitlesFromClipboard()
         {
-            string clipboardText = Clipboard.GetText();
+            string clipboardText = "TODO"; // TODO_norbjd
             List<string> inputLines = clipboardText.Split('\n').ToList();
             List<string> outputLines = ConvertLines(inputLines);
             string output = string.Join("\r\n", outputLines);

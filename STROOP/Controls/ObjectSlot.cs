@@ -36,7 +36,7 @@ namespace STROOP
         Image _bufferedObjectImage;
         Point _textLocation = new Point();
         Point _objectImageLocation = new Point();
-        string _text;
+        string _text = "";
         int _fontHeight;
         #endregion
 

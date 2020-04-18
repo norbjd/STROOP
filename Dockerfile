@@ -3,7 +3,13 @@
 FROM	mono:6.8.0.96
 
 RUN     apt-get update \
- &&	    apt-get install -y libopentk1.1-cil
+ &&     apt-get install -y \
+            libopentk1.1-cil \
+            libgtk2.0-0 \
+            libgl1-mesa-dev \
+            libglu1-mesa-dev \
+            freeglut3-dev \
+            mesa-utils
 
 WORKDIR	/app
 

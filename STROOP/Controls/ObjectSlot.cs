@@ -565,15 +565,15 @@ namespace STROOP
                 {
                     ObjectDataModel hoveredObject = new ObjectDataModel(hoveredAddress.Value);
 
-                    _drawParentOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
+                    _drawParentOverlay = (OverlayConfig.ShowOverlayParentObject || KeyboardUtilities.IsKeyDown(Key.P)) &&
                         address == hoveredObject.Parent;
-                    _drawParentNoneOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
+                    _drawParentNoneOverlay = (OverlayConfig.ShowOverlayParentObject || KeyboardUtilities.IsKeyDown(Key.P)) &&
                         address == hoveredObject.Address &&
                         hoveredObject.Parent == 0;
-                    _drawParentUnusedOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
+                    _drawParentUnusedOverlay = (OverlayConfig.ShowOverlayParentObject || KeyboardUtilities.IsKeyDown(Key.P)) &&
                         address == hoveredObject.Address &&
                         hoveredObject.Parent == ObjectSlotsConfig.UnusedSlotAddress;
-                    _drawChildOverlay = (OverlayConfig.ShowOverlayChildObject || Keyboard.IsKeyDown(Key.P)) &&
+                    _drawChildOverlay = (OverlayConfig.ShowOverlayChildObject || KeyboardUtilities.IsKeyDown(Key.P)) &&
                         CurrentObject?.Parent == hoveredObject.Address;
                 }
                 else
@@ -584,7 +584,7 @@ namespace STROOP
                     _drawChildOverlay = false;
                 }
 
-                uint collisionObjAddress = hoveredAddress.HasValue && Keyboard.IsKeyDown(Key.C)
+                uint collisionObjAddress = hoveredAddress.HasValue && KeyboardUtilities.IsKeyDown(Key.C)
                     ? hoveredAddress.Value : Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
                 _drawCollision1Overlay = OverlayConfig.ShowOverlayCollisionObject &&
                     address == ObjectUtilities.GetCollisionObject(collisionObjAddress, 1);

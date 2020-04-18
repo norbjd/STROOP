@@ -386,10 +386,10 @@ namespace STROOP.Managers
                 WatchVariableSubclass subclass = useObj
                     ? WatchVariableSubclass.Object
                     : WatchVariableSubclass.Number;
-                if (Keyboard.IsKeyDown(Key.A)) subclass = WatchVariableSubclass.Angle;
-                if (Keyboard.IsKeyDown(Key.B)) subclass = WatchVariableSubclass.Boolean;
-                if (Keyboard.IsKeyDown(Key.Q)) subclass = WatchVariableSubclass.Object;
-                if (Keyboard.IsKeyDown(Key.T)) subclass = WatchVariableSubclass.Triangle;
+                if (KeyboardUtilities.IsKeyDown(Key.A)) subclass = WatchVariableSubclass.Angle;
+                if (KeyboardUtilities.IsKeyDown(Key.B)) subclass = WatchVariableSubclass.Boolean;
+                if (KeyboardUtilities.IsKeyDown(Key.Q)) subclass = WatchVariableSubclass.Object;
+                if (KeyboardUtilities.IsKeyDown(Key.T)) subclass = WatchVariableSubclass.Triangle;
 
                 bool isObjectOrTriangle =
                     subclass == WatchVariableSubclass.Object ||

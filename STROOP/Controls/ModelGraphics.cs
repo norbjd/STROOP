@@ -49,14 +49,12 @@ namespace STROOP.Controls
         {
             if (!ManualMode)
             {
-                KeyboardState keyState = Keyboard.GetState();
-
                 float speed = 0.01f;
-                if (keyState.IsKeyDown(Key.ControlLeft) || keyState.IsKeyDown(Key.ControlRight))
+                if (KeyboardUtilities.IsCtrlHeld())
                     speed = 0.0f;
-                else if(keyState.IsKeyDown(Key.ShiftLeft) || keyState.IsKeyDown(Key.ShiftRight))
+                else if(KeyboardUtilities.IsShiftHeld())
                     speed = 0.03f;
-                else if (keyState.IsKeyDown(Key.AltLeft) || keyState.IsKeyDown(Key.AltRight))
+                else if (KeyboardUtilities.IsAltHeld())
                     speed = 0.003f;
 
                 _cameraAngle += speed;
@@ -94,15 +92,13 @@ namespace STROOP.Controls
         float? _pMouseScroll = null;
         public void CameraFly()
         {
-            KeyboardState keyState = Keyboard.GetState();
-
             // Calculate key speed multiplier
             float speedMul = 1f;
-            if (keyState.IsKeyDown(Key.ControlLeft) || keyState.IsKeyDown(Key.ControlRight))
+            if (KeyboardUtilities.IsCtrlHeld())
                 speedMul = 0.0f;
-            else if (keyState.IsKeyDown(Key.ShiftLeft) || keyState.IsKeyDown(Key.ShiftRight))
+            else if (KeyboardUtilities.IsShiftHeld())
                 speedMul = 3.0f;
-            else if (keyState.IsKeyDown(Key.AltLeft) || keyState.IsKeyDown(Key.AltRight))
+            else if (KeyboardUtilities.IsAltHeld())
                 speedMul = 0.3f;
 
             // Handle mouse
@@ -162,32 +158,32 @@ namespace STROOP.Controls
             float posSpeed = speedMul * _modelRadius * 0.01f; // Move at a rate relative to the model size
 
             // Handle Positional Movement 
-            if (keyState.IsKeyDown(Key.W) || keyState.IsKeyDown(Key.Up))
+            if (KeyboardUtilities.IsKeyDown(Key.W) || KeyboardUtilities.IsKeyDown(Key.Up))
             {
                 relDeltaPos.Z += posSpeed;
                 ManualMode = true;
             }
-            if (keyState.IsKeyDown(Key.A) || keyState.IsKeyDown(Key.Left))
+            if (KeyboardUtilities.IsKeyDown(Key.A) || KeyboardUtilities.IsKeyDown(Key.Left))
             {
                 relDeltaPos.X += posSpeed;
                 ManualMode = true;
             }
-            if (keyState.IsKeyDown(Key.S) || keyState.IsKeyDown(Key.Down))
+            if (KeyboardUtilities.IsKeyDown(Key.S) || KeyboardUtilities.IsKeyDown(Key.Down))
             {
                 relDeltaPos.Z += -posSpeed;
                 ManualMode = true;
             }
-            if (keyState.IsKeyDown(Key.D) || keyState.IsKeyDown(Key.Right))
+            if (KeyboardUtilities.IsKeyDown(Key.D) || KeyboardUtilities.IsKeyDown(Key.Right))
             {
                 relDeltaPos.X += -posSpeed;
                 ManualMode = true;
             }
-            if (keyState.IsKeyDown(Key.Q))
+            if (KeyboardUtilities.IsKeyDown(Key.Q))
             {
                 relDeltaPos.Y += -posSpeed;
                 ManualMode = true;
             }
-            if (keyState.IsKeyDown(Key.E))
+            if (KeyboardUtilities.IsKeyDown(Key.E))
             {
                 relDeltaPos.Y += posSpeed;
                 ManualMode = true;

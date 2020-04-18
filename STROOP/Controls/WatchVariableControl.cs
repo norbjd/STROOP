@@ -332,26 +332,26 @@ namespace STROOP.Controls
             bool isCtrlKeyHeld = KeyboardUtilities.IsCtrlHeld();
             bool isShiftKeyHeld = KeyboardUtilities.IsShiftHeld();
             bool isAltKeyHeld = KeyboardUtilities.IsAltHeld();
-            bool isFKeyHeld = Keyboard.IsKeyDown(Key.F);
-            bool isHKeyHeld = Keyboard.IsKeyDown(Key.H);
-            bool isLKeyHeld = Keyboard.IsKeyDown(Key.L);
-            bool isDKeyHeld = Keyboard.IsKeyDown(Key.D);
-            bool isRKeyHeld = Keyboard.IsKeyDown(Key.R);
-            bool isCKeyHeld = Keyboard.IsKeyDown(Key.C);
-            bool isBKeyHeld = Keyboard.IsKeyDown(Key.B);
-            bool isQKeyHeld = Keyboard.IsKeyDown(Key.Q);
-            bool isOKeyHeld = Keyboard.IsKeyDown(Key.O);
-            bool isTKeyHeld = Keyboard.IsKeyDown(Key.T);
-            bool isMKeyHeld = Keyboard.IsKeyDown(Key.M);
-            bool isNKeyHeld = Keyboard.IsKeyDown(Key.N);
-            bool isPKeyHeld = Keyboard.IsKeyDown(Key.P);
-            bool isXKeyHeld = Keyboard.IsKeyDown(Key.X);
-            bool isSKeyHeld = Keyboard.IsKeyDown(Key.S);
+            bool isFKeyHeld = KeyboardUtilities.IsKeyDown(Key.F);
+            bool isHKeyHeld = KeyboardUtilities.IsKeyDown(Key.H);
+            bool isLKeyHeld = KeyboardUtilities.IsKeyDown(Key.L);
+            bool isDKeyHeld = KeyboardUtilities.IsKeyDown(Key.D);
+            bool isRKeyHeld = KeyboardUtilities.IsKeyDown(Key.R);
+            bool isCKeyHeld = KeyboardUtilities.IsKeyDown(Key.C);
+            bool isBKeyHeld = KeyboardUtilities.IsKeyDown(Key.B);
+            bool isQKeyHeld = KeyboardUtilities.IsKeyDown(Key.Q);
+            bool isOKeyHeld = KeyboardUtilities.IsKeyDown(Key.O);
+            bool isTKeyHeld = KeyboardUtilities.IsKeyDown(Key.T);
+            bool isMKeyHeld = KeyboardUtilities.IsKeyDown(Key.M);
+            bool isNKeyHeld = KeyboardUtilities.IsKeyDown(Key.N);
+            bool isPKeyHeld = KeyboardUtilities.IsKeyDown(Key.P);
+            bool isXKeyHeld = KeyboardUtilities.IsKeyDown(Key.X);
+            bool isSKeyHeld = KeyboardUtilities.IsKeyDown(Key.S);
             bool isDeletishKeyHeld = KeyboardUtilities.IsDeletishKeyHeld();
-            bool isBacktickHeld = Keyboard.IsKeyDown(Key.OemTilde);
-            bool isZHeld = Keyboard.IsKeyDown(Key.Z);
-            bool isMinusHeld = Keyboard.IsKeyDown(Key.OemMinus);
-            bool isPlusHeld = Keyboard.IsKeyDown(Key.OemPlus);
+            bool isBacktickHeld = KeyboardUtilities.IsKeyDown(Key.OemTilde);
+            bool isZHeld = KeyboardUtilities.IsKeyDown(Key.Z);
+            bool isMinusHeld = KeyboardUtilities.IsKeyDown(Key.OemMinus);
+            bool isPlusHeld = KeyboardUtilities.IsKeyDown(Key.OemPlus);
             bool isNumberHeld = KeyboardUtilities.IsNumberHeld();
 
             if (isShiftKeyHeld && isNumberHeld)
@@ -743,9 +743,9 @@ namespace STROOP.Controls
 
         private static AddToTabTypeEnum GetAddToTabType()
         {
-            if (Keyboard.IsKeyDown(Key.A)) return AddToTabTypeEnum.GroupedByVariable;
-            if (Keyboard.IsKeyDown(Key.G)) return AddToTabTypeEnum.GroupedByBaseAddress;
-            if (Keyboard.IsKeyDown(Key.F)) return AddToTabTypeEnum.Fixed;
+            if (KeyboardUtilities.IsKeyDown(Key.A)) return AddToTabTypeEnum.GroupedByVariable;
+            if (KeyboardUtilities.IsKeyDown(Key.G)) return AddToTabTypeEnum.GroupedByBaseAddress;
+            if (KeyboardUtilities.IsKeyDown(Key.F)) return AddToTabTypeEnum.Fixed;
             return AddToTabTypeEnum.Regular;
         }
 

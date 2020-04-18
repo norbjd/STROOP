@@ -238,8 +238,6 @@
     <Compile Include="Controls\NoTearFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\VisualLinkLineText.cs" />
-    <Compile Include="Controls\VisualRegexLinkGenerator.cs" />
     <Compile Include="Controls\WatchVariableControlSettings.cs" />
     <Compile Include="Controls\WatchVariableLock.cs" />
     <Compile Include="Controls\BetterContextMenuStrip.cs">
@@ -256,9 +254,6 @@
     </Compile>
     <Compile Include="Controls\BetterTextbox.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\DecompilerView.xaml.cs">
-      <DependentUpon>DecompilerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\WatchVariable.cs" />
     <Compile Include="Controls\WatchVariableControlPrecursor.cs" />
@@ -974,12 +969,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Controls\DecompilerView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\CameraData.xml">

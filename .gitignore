@@ -246,3 +246,7 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# embed emulator in Docker image
+mupen/**/*
+!mupen/README.md

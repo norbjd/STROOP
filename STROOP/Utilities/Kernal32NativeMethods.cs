@@ -62,20 +62,37 @@ namespace STROOP.Utilities
         }
 
         #region DLL Import
-        [DllImport("kernel32.dll")]
-        static extern IntPtr OpenThread(ThreadAccess dwDesiredAccess, bool bInheritHandle, uint dwThreadId);
+        static IntPtr OpenThread(Process process, ThreadAccess dwDesiredAccess, bool bInheritHandle, uint dwThreadId) {
+            foreach (ProcessThread pT in process.Threads)
+            {
+                if (dwThreadId == pT.Id) {
+                    return pT.StartAddress;
+                }
+            }
+            return IntPtr.Zero;
+        }
 
-        [DllImport("kernel32.dll")]
-        static extern uint SuspendThread(IntPtr hThread);
+        static uint SuspendThread(IntPtr hThread) {
+            return (uint)hThread.ToInt32();
+        }
+        
+        static int ResumeThread(IntPtr hThread) {
+            return hThread.ToInt32();
+        }
 
-        [DllImport("kernel32.dll")]
-        static extern int ResumeThread(IntPtr hThread);
+        // TODO : not sure :
+        // 1) if Marshal.Release should be used
+        // 2) based on usage, the return status is never used so we can make it return void instead of bool
+        static bool CloseHandle(IntPtr hObject) {
+            Marshal.Release(hObject);
+            return true; 
+        }
 
-        [DllImport("kernel32.dll")]
-        static extern bool CloseHandle(IntPtr hObject);
-
-        [DllImport("kernel32.dll")]
-        static extern IntPtr OpenProcess(ProcessAccess dwDesiredAccess, bool bInheritHandle, int dwProcessId);
+        static IntPtr OpenProcess(ProcessAccess dwDesiredAccess, bool bInheritHandle, int dwProcessId) {
+            return System.Diagnostics.Process
+                .GetProcessById(dwProcessId)
+                .Handle;
+        }
 
         [DllImport("kernel32.dll")]
         static extern bool ReadProcessMemory(IntPtr hProcess,
@@ -119,7 +136,7 @@ namespace STROOP.Utilities
             // Resume all threads
             foreach (ProcessThread pT in process.Threads)
             {
-                IntPtr pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
+                IntPtr pOpenThread = OpenThread(process, ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
 
                 if (pOpenThread == IntPtr.Zero)
                     continue;
@@ -139,7 +156,7 @@ namespace STROOP.Utilities
             // Pause all threads
             foreach (ProcessThread pT in process.Threads)
             {
-                IntPtr pOpenThread = Kernal32NativeMethods.OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
+                IntPtr pOpenThread = OpenThread(process, ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
 
                 if (pOpenThread == IntPtr.Zero)
                     continue;

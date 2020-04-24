@@ -29,12 +29,17 @@ namespace STROOP
 
         public void HideTheCaret()
         {
-            HideCaret(Handle);
+            if (!PlatformSpecific.IsLinux)
+            {
+                HideCaret(Handle);
+            }
         }
 
         public void ShowTheCaret()
         {
-            ShowCaret(Handle);
+            if (!PlatformSpecific.IsLinux) {
+                ShowCaret(Handle);
+            }
         }
     }
 }

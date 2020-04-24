@@ -635,6 +635,7 @@
     <Compile Include="Utilities\ScriptParser.cs" />
     <Compile Include="Utilities\N64Disassembler.cs" />
     <Compile Include="Utilities\ButtonUtilities.cs" />
+    <Compile Include="Utilities\PlatformSpecific.cs" />
     <Compile Include="Structs\ProcessSelection.cs" />
     <Compile Include="Forms\StroopMainForm.cs">
       <SubType>Form</SubType>

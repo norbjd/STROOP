@@ -80,12 +80,8 @@ namespace STROOP.Utilities
             return hThread.ToInt32();
         }
 
-        // TODO : not sure :
-        // 1) if Marshal.Release should be used
-        // 2) based on usage, the return status is never used so we can make it return void instead of bool
         static bool CloseHandle(IntPtr hObject) {
-            Marshal.Release(hObject);
-            return true; 
+            return true;
         }
 
         static IntPtr OpenProcess(ProcessAccess dwDesiredAccess, bool bInheritHandle, int dwProcessId) {
@@ -102,9 +98,11 @@ namespace STROOP.Utilities
         static extern bool WriteProcessMemory(IntPtr hProcess, UIntPtr lpBaseAddress,
             byte[] lpBuffer, IntPtr dwSize, ref int lpNumberOfBytesWritten);
 
+        // used only for Dolphin
         [DllImport("kernel32.dll")]
         static extern IntPtr VirtualQueryEx(IntPtr hProcess, IntPtr lpAddress, out MemoryBasicInformation lpBuffer, IntPtr dwLength);
 
+        // used only for Dolphin
         [DllImport("psapi", SetLastError = true)]
         static extern bool QueryWorkingSetEx(IntPtr hProcess, out PsapiWorkingSetExInformation pv, uint cb);
         #endregion
@@ -118,17 +116,18 @@ namespace STROOP.Utilities
         {
             return CloseHandle(processHandle);
         }
-
         public static bool ProcessReadMemory(IntPtr hProcess,
-            UIntPtr lpBaseAddress, byte[] lpBuffer, IntPtr dwSize, ref int lpNumberOfBytesRead)
+            UIntPtr lpBaseAddress, byte[] lpBuffer)
         {
-            return ReadProcessMemory(hProcess, lpBaseAddress, lpBuffer, dwSize, ref lpNumberOfBytesRead);
+            int numOfBytes = 0;
+            return ReadProcessMemory(hProcess, lpBaseAddress, lpBuffer, (IntPtr)lpBuffer.Length, ref numOfBytes);
         }
 
         public static bool ProcessWriteMemory(IntPtr hProcess, UIntPtr lpBaseAddress,
-            byte[] lpBuffer, IntPtr dwSize, ref int lpNumberOfBytesWritten)
+            byte[] lpBuffer)
         {
-            return WriteProcessMemory(hProcess, lpBaseAddress, lpBuffer, dwSize, ref lpNumberOfBytesWritten);
+            int numOfBytes = 0;
+            return WriteProcessMemory(hProcess, lpBaseAddress, lpBuffer, (IntPtr)lpBuffer.Length, ref numOfBytes);
         }
 
         public static void ResumeProcess(Process process)

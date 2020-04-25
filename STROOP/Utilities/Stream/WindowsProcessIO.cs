@@ -58,14 +58,12 @@ namespace STROOP.Utilities
 
         protected override bool ReadFunc(UIntPtr address, byte[] buffer)
         {
-            int numOfBytes = 0;
-            return ProcessReadMemory(_processHandle, address, buffer, (IntPtr)buffer.Length, ref numOfBytes);
+            return ProcessReadMemory(_processHandle, address, buffer);
         }
 
         protected override bool WriteFunc(UIntPtr address, byte[] buffer)
         {
-            int numOfBytes = 0;
-            return ProcessWriteMemory(_processHandle, address, buffer, (IntPtr)buffer.Length, ref numOfBytes);
+            return ProcessWriteMemory(_processHandle, address, buffer);
         }
 
         protected virtual void CalculateOffset()

@@ -229,6 +229,12 @@
     <Compile Include="Forms\VariableBitForm.Designer.cs">
       <DependentUpon>VariableBitForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\VariableCreationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VariableCreationForm.Designer.cs">
+      <DependentUpon>VariableCreationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\IUpdatable.cs" />
     <Compile Include="Controls\WatchVariableControl.cs">
       <SubType>UserControl</SubType>
@@ -335,6 +341,7 @@
     <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Managers\CellsManager.cs" />
     <Compile Include="Managers\MusicManager.cs" />
+    <Compile Include="Managers\WarpManager.cs" />
     <Compile Include="Managers\ScriptManager.cs" />
     <Compile Include="Managers\SearchManager.cs" />
     <Compile Include="Managers\SoundManager.cs" />
@@ -345,6 +352,7 @@
     <Compile Include="Map\MapCeilingObject.cs" />
     <Compile Include="Map\MapBackgroundObject.cs" />
     <Compile Include="Map\MapCustomCirclePointsObject.cs" />
+    <Compile Include="Map\MapPreviousPositionsObject.cs" />
     <Compile Include="Map\MapObjectArrowObject.cs" />
     <Compile Include="Map\MapMapObject.cs" />
     <Compile Include="Map\MapDrawType.cs" />
@@ -851,6 +859,9 @@
     <Content Include="Config\Map3DVars.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Config\WarpData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Config\WaterData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -860,6 +871,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\VariableBitForm.resx">
       <DependentUpon>VariableBitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VariableCreationForm.resx">
+      <DependentUpon>VariableCreationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Map\MapTracker.resx">
       <DependentUpon>MapTracker.cs</DependentUpon>
